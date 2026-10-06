@@ -37,10 +37,29 @@ namespace OrderDetailsMaintenance
         // Nady Fotie 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+            if (_customer == null)
+            {
+                MessageBox.Show("The customer is not there.");
+                return;
+            }
+
+
+            _customer.ContactName = txtContact.Text;
+            _customer.Address = txtAddress.Text;
+            _customer.City = txtCity.Text;
+            _customer.Country = txtCountry.Text;
+
             _context.Customers.Update(_customer);
             _context.SaveChanges();
 
+            MessageBox.Show("Customer was saved.");
+           
+            
+
         }
+
+
         // Nady Fotie 
         private void btnExit_Click(object sender, EventArgs e)
         {
